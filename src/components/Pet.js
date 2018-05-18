@@ -1,28 +1,41 @@
-import React from 'react';
+import React from "react";
+import { Card } from "semantic-ui-react";
 
 class Pet extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
 
   render() {
     return (
-      <div className="card">
+      <Card>
         <div className="content">
-          <a className="header">Pet name (gender: ♂ or ♀)</a>
+          <a className="header">
+            Pet: {this.props.petInfo.name} (gender:{" "}
+            {this.props.petInfo.gender === "male" ? "♂" : "♀"})
+          </a>
           <div className="meta">
-            <span className="date">Pet type</span>
+            <span className="date">{this.props.petInfo.type}</span>
           </div>
           <div className="description">
-            <p>Age: </p>
-            <p>Weight: </p>
+            <p>Age: {this.props.petInfo.age}</p>
+            <p>Weight: {this.props.petInfo.weight}</p>
           </div>
         </div>
         <div className="extra content">
-          <button className="ui primary button">Adopt pet</button>
-          <button className="ui disabled button">Already adopted</button>
+          {this.props.adoptedPets.includes(this.props.petInfo.id) ? (
+            <button className="ui disabled button">Already adopted</button>
+          ) : (
+            <button
+              data-id={this.props.petInfo.id}
+              className="ui primary button"
+              onClick={this.props.onAdoptPet}
+            >
+              Adopt pet
+            </button>
+          )}
         </div>
-      </div>
+      </Card>
     );
   }
 }
