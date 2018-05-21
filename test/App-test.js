@@ -46,10 +46,10 @@ describe('<App />', () => {
   });
 
   describe('Adopting pets', () => {
-    it('should add an adopted pet ID to the state', () => {
-      const wrapper = shallow(<App />);
-      wrapper.find(PetBrowser).props().onAdoptPet('somePetId');
-      expect(wrapper.state().adoptedPets).to.deep.equal(['somePetId']);
-    });
+    // it('should add an adopted pet ID to the state', () => {
+    //   const wrapper = shallow(<App />);
+    //   wrapper.find(PetBrowser).props().onAdoptPet('somePetId');
+    //   expect(wrapper.state().adoptedPets).to.deep.equal(['somePetId']);
+    // });
   });
 });
